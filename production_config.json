@@ -1,0 +1,21 @@
+{
+	"mongodb":{
+		"uri":"mongodb://heroku:8a03a82a0eca051b3be39dbc1c33f506@troup.mongohq.com:10095/app22646956"
+	},
+	"http":{
+		"sessionSecret":"!#@$%&*^"
+	},
+	"redis":{
+		"uri":"redis://rediscloud:uq5Wr5ycT2aGI5ZF@pub-redis-14587.us-east-1-3.1.ec2.garantiadata.com:14587"
+	},
+	"mandrill": {
+        "apikey": "eBwZ2GI_5GabmN46DMNT2Q"
+    },
+    "emails":{
+    	"info":"info@pingjs.com"
+    },
+    "amqp": {
+	    "RABBITMQ_RX_URL": "amqp://YXTHrqGo:h8ibbYNS3w1YmPaHkl85LQLxsObi8_tj@spotted-hazel-4.bigwig.lshift.net:10557/Fq9-5NruBZ3j",
+	    "job_queue":"jobs_queue"
+	}
+}
