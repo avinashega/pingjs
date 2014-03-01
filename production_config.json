@@ -3,7 +3,8 @@
 		"uri":"mongodb://heroku:8a03a82a0eca051b3be39dbc1c33f506@troup.mongohq.com:10095/app22646956"
 	},
 	"http":{
-		"sessionSecret":"!#@$%&*^"
+		"sessionSecret":"!#@$%&*^",
+		"host":"http://pingjs-web.herokuapp.com/"
 	},
 	"redis":{
 		"uri":"redis://rediscloud:uq5Wr5ycT2aGI5ZF@pub-redis-14587.us-east-1-3.1.ec2.garantiadata.com:14587"

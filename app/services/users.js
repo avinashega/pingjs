@@ -47,7 +47,9 @@ module.exports={
 	            });
 		},
 		activateUser: function(token){
-			return q.nbind(users.activateUser, users)(token);
+			return q.nbind(users.activateUser, users)(token).then(function(user){
+				return user[0];
+			});
 		},
 		signin: function(req){
 			return q.nbind(users.getByLoginAndPassword, users)(req.body.username, req.body.password).then(function(user){
