@@ -1,0 +1,20 @@
+.b-siteList__addForm {
+    display: none;
+}
+
+.b-siteList__addBlock_open .b-siteList__addForm {
+    display: block;
+}
+
+.b-siteList__addBlock_open .b-siteList__addButton{
+    display: none;
+}
+
+.b-siteList__successMessage,
+.b-siteList__errorMessage{
+    display: none;
+}
+.b-siteList_success .b-siteList__successMessage,
+.b-siteList_error .b-siteList__errorMessage{
+    display: block;
+}

@@ -2,12 +2,10 @@ var fs = require('fs'),
     express = require('express');
 
 module.exports = function (app, acl) {
-    var controllersDir = __dirname + '/../controllers/',
-        viewsDir = __dirname + '/../views/';
+    var controllersDir = __dirname + '/../controllers/';
     fs.readdirSync(controllersDir).forEach(function (file) {
             var controller = require(controllersDir + file),
             controllerName = file.replace(/\.js$/, '');
-        app.set('views', viewsDir + controllerName + '/');
         controller.routes(app, acl);
     });
 };

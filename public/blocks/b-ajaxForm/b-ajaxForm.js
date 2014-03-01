@@ -78,7 +78,7 @@
 
         _showErrors: function (errors) {
             if (typeof errors === 'string') {
-                this.$errorMessage.text(errors);
+                this.$errorMessage.html(errors);
                 this._setMod(this.$errorMessage, 'show');
             } else {
                 var err,

@@ -35,6 +35,10 @@ module.exports = {
     userService: function () {
         return require('./services/users');
     },
+    
+    siteService: function(){
+    	return require('./services/sites');
+    },
 
     
     paymentService: function (deviceId, userAgent) {

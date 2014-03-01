@@ -1,0 +1,12 @@
+<div class="list-group">
+    {{#unless sites.length}}
+        <div class="alert alert-warning">Empty Ping list</div>
+    {{/unless}}
+
+    {{#each sites}}
+        <a class="list-group-item b-siteList__item" href="#" data-id="{{_id}}">
+            {{protocol}}://{{url}}
+        <button class="close b-siteList__removeButton" type="button">&times;</button>
+        </a>
+    {{/each}}
+</div>

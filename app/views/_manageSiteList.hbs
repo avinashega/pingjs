@@ -1,0 +1,56 @@
+<div class="list-group">
+    {{#unless sites.length}}
+        <div class="alert alert-warning">You don't have any Pings yet. Add one now using the button below.</div>
+    {{/unless}}
+    {{#if sites.length}}
+    <table class="table table-striped table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>Protocol</th>
+            <th>Url</th>
+            <th>port</th>
+            <th>Site Path</th>
+            <th>Method</th>
+            <th>Frequency</th>
+            <th>Last Checked Status</th>
+            <th>Last Checked At</th>
+            <th>Edit</th>
+            <th>Remove</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {{#each sites}}
+            <tr class="b-siteList__item" data-id="{{_id}}">
+            <td>
+                {{protocol}}
+            </td>
+            <td>
+                {{url}}
+            </td>
+            <td>
+                {{port}}
+            </td>
+            <td>
+                {{path}}
+            </td>
+            <td>
+                {{method}}
+            </td>
+            <td>
+                {{frequency}} minutes
+            </td>
+            <td>
+                {{lastStatus}}
+            </td>
+            <td>
+                {{lastCheckedAt}}
+            </td>
+            <td><button class="btn btn-sm btn-default b-siteList__editPing" type="button">Edit</button></td>
+            <td><button class="btn btn-danger b-siteList__removeButton" type="button">Remove</button></td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+    {{/if}}
+</div>

@@ -1,6 +1,6 @@
 (function ($) {
 
-    $.widget('role.b-accountList', {
+    $.widget('role.b-siteList', {
 
         options: {
             url: ''

@@ -3,7 +3,7 @@ var _checkAuth = i.authMiddleware;
 var jsonResponse = i.jsonResponse;
 module.exports={
 		index: function(req, resp){
-			resp.render('index');
+			resp.render('index', {username: req.session.username});
 		},
 		signup: function(req, resp){
 			resp.render('signup');
@@ -31,6 +31,7 @@ module.exports={
 					resp.json(jsonResponse.error('Incorrect username/password.'));
 				} else {
 					req.session.userId = user._id.toString();
+					req.session.username = user.username;
 					resp.json(jsonResponse.redirect('/'));
 				}
 			}).fail(function(err){
@@ -44,6 +45,7 @@ module.exports={
 					resp.render('message', {message:"Internal Server Error. Activation Failed."});
 				} else {
 					req.session.userId = user._id.toString();
+					req.session.username = user.username;
 					resp.redirect('/');
 				}
 			}).fail(function(err){

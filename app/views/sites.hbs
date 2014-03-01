@@ -1,0 +1,57 @@
+{{!< default}} {{#contentFor "title"}}Pings{{/contentFor}}
+<h2>Manage your Pings</h2>
+<div class="row">
+	<div class="col-md-12 b-siteList" role="b-siteList"
+		onclick="return {url: '/manageSites/list', removeUrl: '/sites/remove', editSiteUrl: '/sites/edit'};">
+		<div class="alert alert-danger help-block b-siteList__errorMessage"></div>
+        <div class="alert alert-success help-block b-siteList__successMessage"><strong>Success!</strong></div>
+		<div class="text-info">List of Ping(s):</div>
+		<div class="b-siteList__list"></div>
+
+
+		<div class="b-siteList__addBlock">
+			<button type="button"
+				class="btn btn-success b-siteList__addButton">Create
+				Ping</button>
+
+			<form class="b-siteList__addForm col-md-6" action="/sites/add"
+				method="post" role="b-ajaxForm" autocomplete="off">
+				<h4>Create Ping</h4>
+				<div class="form-group col-md-4">
+	        <label class="control-label">Protocol</label>
+	        <div class="bfh-selectbox" data-name="protocol" id="protocol" data-value="http">
+	            <div data-value="http">HTTP</div>
+	            <div data-value="https">HTTPS</div>
+	        </div>
+	        </div>
+	        <div class="form-group col-md-8">
+	            <label class="control-label">URL</label>
+	            <input type="text" name="url" required placeholder="www.example.com" class="form-control">
+	        </div>
+			<div class="form-group col-md-6">
+	            <label class="control-label">Port</label>
+	            <input type="text" name="port" placeholder="optional(example:8080)" class="form-control">
+	        </div>
+	        <div class="form-group col-md-6">
+	            <label class="control-label">Site Path</label>
+	            <input type="text" name="path" class="form-control" placeholder="optional(example: home, index)">
+	        </div>
+	        <div class="form-group col-md-6">
+	        <label class="control-label">Method</label>
+	        <div class="bfh-selectbox" data-name="method" id="method" data-value="GET">
+	            <div data-value="GET">GET</div>
+	            <div data-value="POST">POST</div>
+	        </div>
+	        </div>
+	        <div class="form-group col-md-6">
+	            <label class="control-label">Frequency(in minutes)</label>
+	            <input type="text" name="frequency" required value="5" class="form-control">
+	        </div>
+	    	<button type="submit" class="btn btn-lg btn-success btn-block b-ajaxForm__submitButton" autocomplete="off">Create</button>
+	    	<label class="help-block text-danger b-ajaxForm__errorMessage"></label>
+	    	<label class="help-block text-success b-ajaxForm__successMessage"></label>
+
+			</form>
+		</div>
+	</div>
+</div>

@@ -58,5 +58,9 @@ module.exports={
 				}
 				return user;
 			});
+		},
+		
+		getById: function(id){
+			return q.nbind(users.getById, users)(id);
 		}
 }
