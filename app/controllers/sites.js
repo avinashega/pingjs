@@ -63,11 +63,22 @@ module.exports = {
         .done();
 	},
 	
+	activity: function(req, resp){
+		i.siteService().getActivity(req.session.username).then(function(activity){
+			console.log(activity);
+			resp.render('activity', {activity:activity});
+		}).fail(function(err){
+			console.log(err);
+			resp.render('activity');
+		});
+	},
+	
 	routes: function(app){
 		app.post('/sites/add', _checkAuth(false), this.postsite);
 		app.post('/sites/remove', _checkAuth(false), this.deletesite);
 		app.get('/sites/list', _checkAuth(false), this.list);
 		app.get('/manageSites/list', _checkAuth(false), this.managelist);
 		app.get('/sites', _checkAuth(false), this.sites);
+		app.get('/activity', _checkAuth(false), this.activity);
 	}
 }

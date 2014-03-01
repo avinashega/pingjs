@@ -4,6 +4,7 @@ var i = require('../i');
 var agenda = i.agenda();
 var sites = i.db().sites;
 var jobs = i.db().agendaJobs;
+var activity = i.db().activity;
 
 module.exports={
 	addSite: function(req){
@@ -56,6 +57,7 @@ module.exports={
             	var job = agenda.create('ping', {_id:site._id});
             	job.repeatEvery(site.frequency+' minutes');
             	q.nbind(job.save, job)();
+            	q.nbind(activity.save, activity)({date:Date.now(), username:site.username, activity:'Check Created for '+site.url});
             	return site;
         });
 	},
@@ -64,6 +66,7 @@ module.exports={
 		return q.fcall(function () {
         	return q.nbind(sites.findAndModify, sites)({_id:ObjectId(id)}, [ ['_id', 'asc'] ],{$set:{active:false}}, {new:true});
         }).then(function(site){
+        	q.nbind(activity.save, activity)({date:Date.now(), username:site[0].username, activity:'Check deleted for '+site[0].url});
         	return q.nbind(jobs.remove, jobs)({'data._id':site[0]._id});
         });
 	},
@@ -74,5 +77,8 @@ module.exports={
 	
 	getByUsername: function(username){
 		return q.nbind(sites.getByUsername, sites)(username);
+	},
+	getActivity: function(username){
+		return q.nbind(activity.getByUsername, activity)(username);
 	}
 }
