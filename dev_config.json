@@ -15,7 +15,7 @@
     	"info":"info@pingjs.com"
     },
     "amqp": {
-	    	"RABBITMQ_RX_URL": "amqp://guest:guest@localhost:5672",
-	    	"job_queue":"jobs_queue"
-	    }
+	    "RABBITMQ_TX_URL": "amqp://YXTHrqGo:h8ibbYNS3w1YmPaHkl85LQLxsObi8_tj@spotted-hazel-4.bigwig.lshift.net:10556/Fq9-5NruBZ3j",
+	    "job_queue":"jobs_queue_dev"
+	}
 }
