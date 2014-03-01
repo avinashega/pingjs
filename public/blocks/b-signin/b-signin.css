@@ -1,0 +1,8 @@
+.b-signin__successMessage,
+.b-signin__errorMessage{
+    display: none;
+}
+.b-signin_success .b-signin__successMessage,
+.b-signin_error .b-signin__errorMessage{
+    display: block;
+}

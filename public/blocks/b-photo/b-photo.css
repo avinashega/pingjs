@@ -1,0 +1,33 @@
+.b-photo__imgBlock,
+.b-photo_img .b-photo__form {
+    display: none;
+}
+
+.b-photo_img .b-photo__imgBlock {
+    display: block;
+}
+
+.b-photo__img{
+    max-width: 100%;
+    max-height: 600px;
+    cursor: pointer;
+}
+
+.b-photo__successMessage,
+.b-photo__errorMessage,
+.b-photo__postBlock{
+    display: none;
+}
+
+.b-photo_post .b-photo__postBlock{
+    display: block;
+}
+
+.b-photo_success .b-photo__successMessage,
+.b-photo_error .b-photo__errorMessage{
+    display: block;
+}
+
+.b-photo__cancelButton{
+    margin-left: 10px;
+}

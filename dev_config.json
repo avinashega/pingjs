@@ -1,0 +1,17 @@
+{
+	"mongodb":{
+		"uri":"mongodb://aviansh:avinash@localhost:27017/pingjs"
+	},
+	"http":{
+		"sessionSecret":"!#@$%&*^"
+	},
+	"redis":{
+		"uri":"redis://app21963700:v3h2MCwkN38O4Tw1@pub-redis-14199.us-east-1-3.1.ec2.garantiadata.com:14199"
+	},
+	"mandrill": {
+        "apikey": "eBwZ2GI_5GabmN46DMNT2Q"
+    },
+    "emails":{
+    	"info":"info@pingjs.com"
+    }
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{block "title"}}</title>
+
+    {{> header}}
+    {{block "headscript"}}
+</head>
+<body>
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button data-target="#navbar-main" data-toggle="collapse" type="button" class="navbar-toggle">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/"><img src="/img/logo_50h.png" alt="Schedugram Logo" title="Schedugram Logo"></a>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="/accounts">Accounts</a>
+                </li>
+                <li>
+                    <a href="/">Post or Schedule</a>
+                </li>
+                <li>
+                    <a href="/schedule">Activity Log</a>
+                </li>
+                <li>
+                	<a href="/contact">Support</a>
+                </li>
+                
+            </ul>
+            <ul class="nav navbar-nav pull-right">
+                <li class="dropdown">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle" style="color:#000">{{login}}<i style="margin-left:5px;" class="icon-chevron-down"></i></a>
+                    <ul role="menu" aria-labelledby="dropdownMenu" class="dropdown-menu">
+                        <li><a tabindex="-1" href="/profile">My account / Billing</a></li>
+                        <li><a tabindex="-1" href="/signout">Signout</a></li>
+                    </ul>
+                </li>
+            </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<p>&nbsp;</p>
+<div class="container">
+    {{{body}}}
+</div>
+{{> footer}}
+{{{block "footerscripts"}}}
+</body>
+</html>

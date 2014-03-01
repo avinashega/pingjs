@@ -1,0 +1,23 @@
+.b-uploadForm__button {
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    opacity: 0;
+}
+
+.b-uploadForm__errorMessage {
+    display: none;
+}
+
+.b-uploadForm_error .b-uploadForm__errorMessage {
+    display: block;
+}
+
+.b-uploadForm_uploading .b-uploadForm__submitButton,
+.b-uploadForm__uploadButton {
+    display: none;
+}
+
+.b-uploadForm_uploading .b-uploadForm__uploadButton {
+    display: inline-block;
+}

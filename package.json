@@ -1,0 +1,40 @@
+{
+ "name": "Pingjs",
+ "private": true,
+ "version": "0.1.0",
+ "author": "Avinash Ega <avinash.ega@gmail.com>",
+ "description": "Site Monitoring Service",
+ "scripts": {
+  "start": "node index.js"
+ },
+ "dependencies": {
+  "express": "*",
+  "express-hbs": "*",
+  "express-validator": "*",
+  "connect-redis": "*",
+  "redis-url": "*",
+  "less-middleware": "*",
+  "request": "*",
+  "validator": "*",
+  "underscore": "*",
+  "q": "*",
+  "mongoskin": "0.6.1",
+  "getconfig": "*",
+  "agenda": "0.5.4",
+  "mime": "*",
+  "moment": "*",
+  "amqplib": "*",
+  "when": "*",
+  "timezone": "*",
+  "newrelic": "*",
+  "mandrill-api": "*",
+  "handlebars": "*"
+ },
+ "devDependencies": {
+  "debug": "*"
+ },
+ "engines": {
+  "node": "0.10.*",
+  "npm": "1.2.*"
+ }
+}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{{block "title"}}</title>
+
+        {{> header}}
+        {{block "headscript"}}
+        <link rel="stylesheet" href="/css/sign.css">
+    </head>
+    <body>
+        <section id="header">
+            <div class="container"><img src="/img/logo_50h.png" title="Schedugram logo" alt="Schedugram Logo"></div>
+        </section>
+        <div class="container">
+            {{{body}}}
+        </div>
+
+        {{> footer}}
+        {{{block "footerscripts"}}}
+    </body>
+</html>

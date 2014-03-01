@@ -1,0 +1,80 @@
+{{!< default}}
+
+{{#contentFor "title"}}Schedugram{{/contentFor}}
+
+<h1>Post to Instagram</h1>
+
+<div class="row">
+    <div class="col-md-3 b-accountList" role="b-accountList" onclick="return {url: '/account/list', removeUrl: '/account/remove'};">
+        <h2>Accounts</h2>
+        <div class="text-info">Select account(s):</div>
+        <div class="b-accountList__list">
+        </div>
+        <button type="button" class="btn btn-success" onclick="window.location='/accounts';">Manage Accounts</button>
+    </div>
+    <div class="col-md-1">&nbsp;</div>
+    <div class="col-md-8" role="b-photo" onclick="return {'url': '/photo/post'}">
+        <h2>Upload an image</h2>
+        <div class="alert alert-danger help-block b-photo__errorMessage">Upload error! Please see the Activity Log for details.</div>
+        <div class="alert alert-success help-block b-photo__successMessage"><strong>Success!</strong> The task has been queued.</div>
+        <form class="b-photo__form" role="b-uploadForm" action="/photo/upload" method="post" enctype="multipart/form-data" autocomplete="off">
+            <div class="form-group">
+                <h4>Uploading an image to Schedugram is easy.</h4>
+                <div class="alert alert-info">
+                <p><strong>1. Select the account(s) you want to post to on the left.</strong></p>
+                <p><strong>2. Choose an image to upload in JPG or PNG format (we recommend JPEG) by clicking the 'Upload' button.</strong></p>
+                </div>
+                <label>
+                    <input type="file" name="photo" class="b-uploadForm__button" />
+                    <button type="button" class="btn btn-info b-uploadForm__submitButton">Upload</button>
+                    <button disabled type="button" class="btn btn-info b-uploadForm__uploadButton"><i class="fa fa-refresh fa-spin"></i> &nbsp; Uploading now...</button>
+                </label>
+                <div class="text-danger help-block b-uploadForm__errorMessage">Upload error</div>
+            </div>
+            <p><strong>Note:</strong> Images should be no larger than 5 megabytes. Images must be at least 640 pixels square, or they may appear blurry/pixelated.</p>
+        </form>
+
+        <div class="b-photo__imgBlock">
+            <div class="well text-center">
+                <img class="b-photo__img" role="b-aviary" title="Click me to edit!" />
+            </div>
+            <div class="text-info"><p>Note: you can click image to edit it again.</p></div>
+            <p>&nbsp;</p>
+            <div class="b-photo__postBlock">
+
+                <div class="form-group">
+                    <label class="control-label">Caption</label>
+                    <textarea cols="40" rows="3" name="caption" class="form-control b-photo__caption"></textarea>
+                    <p class="small">Note: Emoji/emoticons may not post, along with some non-standard characters - we are working on this feature.</p>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">Select date and time</label>
+                    <div class="clearfix"></div>
+                    <label class="input-group bootstrap-date col-md-3 pull-left" style="margin-right:10px;">
+                        <input type="text" name="date" class="form-control b-photo__datepicker" autocomplete="off" />
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                    </label>
+                    <label class="input-group bootstrap-timepicker col-md-3 pull-left" style="margin-right:10px;">
+                        <input type="text" name="time" class="form-control b-photo__timepicker" autocomplete="off" />
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                    </label>
+                    <div class="clearfix"></div>
+                        <label class="input-group col-md-12 pull-left" style="padding-top:10px;">
+                            <input type="checkbox" name="notification" class="b-photo__notification"> Send notification to your email address when the post is successful. (beta)
+                        </label>
+                        <p class="small col-md-12">Note: Schedugram uses 24 hour time. Your post will be scheduled in your timezone: <strong>{{session.timezone}}</strong>.</p>
+                </div>
+                <div class="clearfix"></div>
+
+                <div class="form-group">
+                    <button type="button" class="btn btn-success b-photo__postButtonNow" data-loading-text="<i class='fa fa-refresh fa-spin'></i> &nbsp; Please wait...">Post now</button>
+                    <button type="button" class="btn btn-info b-photo__postButton" data-loading-text="<i class='fa fa-refresh fa-spin'></i> Scheduling...">Schedule for later</button>
+
+                    <button type="button" class="btn btn-danger b-photo__cancelButton pull-right">Cancel &amp; Upload another</button>
+                    <button type="button" class="btn btn-default b-photo__resetButton pull-right">Reset changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

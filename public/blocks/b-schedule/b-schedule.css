@@ -1,0 +1,17 @@
+.b-schedule__list {
+    display: none;
+    margin-top: 20px;
+}
+
+.b-schedule_type_inactive .b-schedule__list_inactive,
+.b-schedule_type_active .b-schedule__list_active {
+    display: block;
+}
+.b-schedule__successMessage,
+.b-schedule__errorMessage{
+    display: none;
+}
+.b-schedule_success .b-schedule__successMessage,
+.b-schedule_error .b-schedule__errorMessage{
+    display: block;
+}

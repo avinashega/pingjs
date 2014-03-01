@@ -1,0 +1,7 @@
+.b-ajaxForm__errorMessage{
+    display: none;
+}
+
+.b-ajaxForm__errorMessage_show{
+    display: block;
+}
