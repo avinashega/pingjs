@@ -12,7 +12,7 @@ module.exports = {
 				var templateFile = fs.readFileSync('app/views/emails/welcome.hbs', 'utf8');
 			 	welcome = handlebars.compile( templateFile );
 			}
-			var html = welcome({user:user, host:config.http:host});
+			var html = welcome({user:user, host:config.http.host});
         	var jobData = {
                     html: html,
                     text: 'Welcome to Schedugram',
