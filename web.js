@@ -48,6 +48,9 @@ app.configure(function () {
     require('./app/bootstraps/errors')(app);
     var agenda = require('./app/bootstraps/agenda');
     require('./app/bootstraps/agenda-jobs')(agenda);
+    console.log('start newrelic on job worker');
+    require('newrelic');
+    console.log('finished starting newrelic on job worker');
     console.log('started');
 });
 
