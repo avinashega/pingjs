@@ -1,6 +1,9 @@
 var i = require('../i');
 var _checkAuth = i.authMiddleware;
-var jsonResponse = i.jsonResponse;
+var jsonResponse = i.jsonResponse,
+crypto = require('crypto');
+
+var intercom_api_secret = 'fL8fwuVjhxbdYMnDyPlxAc5XkgDlhc99Y3NWQ7h8';
 module.exports={
 		index: function(req, resp){
 			resp.render('index');
@@ -38,6 +41,11 @@ module.exports={
 				} else {
 					req.session.userId = user._id.toString();
 					req.session.username = user.username;
+					req.session.name = user.firstName+' '+user.lastName;
+					req.session.createdAt = user.created_at;
+					req.session.email = user.email;
+					user.encryptedemail = crypto.createHmac('sha256', intercom_api_secret).update(user.email.toString()).digest('hex');
+    				req.session.userhash = user.encryptedemail;
 					resp.json(jsonResponse.redirect('/home'));
 				}
 			}).fail(function(err){
@@ -52,6 +60,11 @@ module.exports={
 				} else {
 					req.session.userId = user._id.toString();
 					req.session.username = user.username;
+					req.session.name = user.firstName+' '+user.lastName;
+					req.session.createdAt = user.created_at;
+					req.session.email = user.email;
+					user.encryptedemail = crypto.createHmac('sha256', intercom_api_secret).update(user.email.toString()).digest('hex');
+    				req.session.userhash = user.encryptedemail;
 					resp.redirect('/home');
 				}
 			}).fail(function(err){
