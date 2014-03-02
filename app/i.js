@@ -58,12 +58,12 @@ module.exports = {
             var isGuest = !req.session.userId;
 
             if (needGuest && !isGuest) {
-                resp.redirect('/');
+                resp.redirect('/home');
                 return;
             }
 
             if (!needGuest && isGuest) {
-                resp.redirect('/pingjs');
+                resp.redirect('/');
                 return;
             }
             next();
