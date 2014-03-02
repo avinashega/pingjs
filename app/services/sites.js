@@ -31,19 +31,19 @@ module.exports={
 	        	return i.siteService().getByUsername(user.username).then(function(userSites){
 	        		console.log(userSites);
 	        		if(user.subscription == null || user.subscription.state != 'active'){ //new user
-	        			if(userSites.length == 0){
-	        				console.log('one free plan');
+	        			if(userSites.length < 3){
+	        				console.log('three free checks');
 	        				body.username = user.username;
 	        				body.active = true;
 	        				return q.nbind(sites.addSite, sites)(body);
 	        			} else {
-	        				return q.reject('Site limit Reached. Upgrade your plan from the <a href="/user">profile</a> page');
+	        				return q.reject('Site limit Reached. Upgrade your plan from the <a href="/profile">profile</a> page');
 	        			}	        			
 	        		}
 	        		return i.planService().getByPlanId(user.subscription.subscription_plan_id).then(function(plan){
 	        			console.log(userSites.length);
 	        			if(userSites.length >= plan.limit){
-	        				return q.reject('Site limit Reached. Upgrade your plan from the <a href="/user">profile</a> page');
+	        				return q.reject('Site limit Reached. Upgrade your plan from the <a href="/profile">profile</a> page');
 	        			} else {
 	        				console.log('here');
 	        				return q.nbind(sites.insert, sites)({url:body.site, frequency:5, account:req.user.username, active:true});
