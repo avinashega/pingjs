@@ -64,5 +64,40 @@ module.exports={
 		
 		getById: function(id){
 			return q.nbind(users.getById, users)(id);
-		}
+		},
+	    updateUser: function(id, req){
+	        req.sanitize('email').trim();
+	        req.sanitize('company').trim();
+	        req.sanitize('firstName').trim();
+	        req.sanitize('lastName').trim();
+
+	        req.assert('email', 'Valid email required').isEmail();
+	        req.assert('firstName', 'First name required').notEmpty();
+	        req.assert('lastName', 'Last name required').notEmpty();
+	        
+	        return q.fcall(function () {
+	            var errors = req.validationErrors();
+	            if (errors) {
+	                return q.reject(errors);
+	            } else {
+	                return req.body;
+	            }
+	        }).then(function(params){
+	        	return q.nbind(users.updateUser, users)(id, params);
+	        });
+	    },
+	    changePassword: function(id, req){
+	    	req.assert('newPassword', 'Please use at least 6 characters').len(6, 100);
+	        req.assert('currentPassword', 'Passwords are equal').equals(req.param('newPassword'));
+	        return q.fcall(function () {
+	            var errors = req.validationErrors();
+	            if (errors) {
+	                return q.reject(errors);
+	            } else {
+	                return req.body;
+	            }
+	        }).then(function(params){
+	        	return q.nbind(users.changePassword, users)(id, req.body.password, req.body.newpassword);
+	        });
+	    }
 }

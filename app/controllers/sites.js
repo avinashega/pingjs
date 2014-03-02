@@ -66,10 +66,10 @@ module.exports = {
 	activity: function(req, resp){
 		i.siteService().getActivity(req.session.username).then(function(activity){
 			console.log(activity);
-			resp.render('activity', {activity:activity});
+			resp.render('activity', {activity:activity, username:req.session.username});
 		}).fail(function(err){
 			console.log(err);
-			resp.render('activity');
+			resp.render('activity',{username:req.session.username});
 		});
 	},
 	

@@ -53,18 +53,6 @@ module.exports={
 				resp.render('message', {message:err});
 			});
 		},
-		changePassword: function(req, resp){
-			i.userService().changePassword(req).then(function(user){
-				if(!user || user.length <1 ){
-					resp.json(jsonResponse.error('Internal server error. Failed to Change Password.'));
-				} else {
-					resp.json(jsonResponse.data('Password Changed Successfully.'));
-				}
-			}).fail(function(err){
-				console.log(err);
-				resp.json(jsonResponse.error(err));
-			});
-		},
 		forgotPassword: function(req, resp){
 			i.userService().forgotPassword(req).then(function(token){
 				if(!token){
@@ -77,17 +65,6 @@ module.exports={
 				resp.json(jsonResponse.error(err));
 			});
 			
-		},
-		updateProfile: function(req, resp){
-			i.userService().updateProfile(req).then(function(user){
-				if(!user || user.length < 1){
-					resp.json(jsonResponse.error('Internal server error. Update profile failed.'));
-				} else {
-					resp.json(jsonResponse.data('Profile updated successfully.'));
-				}
-			}).fail(function(err){
-				resp.json(jsonResponse.error(err));
-			})
 		},
 		signout: function(req, resp){
 	        req.session.destroy();
@@ -107,8 +84,6 @@ module.exports={
 			app.post('/signin', this.signinAction);
 			app.get('/activate/:token', this.activate);
 			app.post('/forgotPassword', this.forgotPassword);
-			app.post('/changePassword', this.changePassword);
-			app.post('/updateUser', this.updateProfile);
 			app.get('/profile', this.profile);
 			app.get('/signout', this.signout);
 			app.get('/emailConfirmation', this.emailConfirmation);
