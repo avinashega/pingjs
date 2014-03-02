@@ -5,6 +5,9 @@ module.exports={
 		index: function(req, resp){
 			resp.render('index', {username: req.session.username});
 		},
+		pingjs: function(req, resp){
+			resp.render('pingjs');
+		},
 		signup: function(req, resp){
 			resp.render('signup');
 		},
@@ -87,5 +90,6 @@ module.exports={
 			app.get('/profile', this.profile);
 			app.get('/signout', this.signout);
 			app.get('/emailConfirmation', this.emailConfirmation);
+			app.get('/pingjs', this.pingjs);
 		}
 }
