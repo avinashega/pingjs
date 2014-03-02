@@ -3,7 +3,10 @@ var _checkAuth = i.authMiddleware;
 var jsonResponse = i.jsonResponse;
 module.exports={
 		index: function(req, resp){
-			resp.render('index', {username: req.session.username});
+			resp.render('index');
+		},
+		home: function(req, resp){
+			resp.render('home', {username: req.session.username});
 		},
 		pingjs: function(req, resp){
 			resp.render('pingjs');
@@ -35,7 +38,7 @@ module.exports={
 				} else {
 					req.session.userId = user._id.toString();
 					req.session.username = user.username;
-					resp.json(jsonResponse.redirect('/'));
+					resp.json(jsonResponse.redirect('/home'));
 				}
 			}).fail(function(err){
 				console.log(err);
@@ -49,7 +52,7 @@ module.exports={
 				} else {
 					req.session.userId = user._id.toString();
 					req.session.username = user.username;
-					resp.redirect('/');
+					resp.redirect('/home');
 				}
 			}).fail(function(err){
 				console.log(err);
@@ -73,21 +76,18 @@ module.exports={
 	        req.session.destroy();
 	        resp.redirect('/signin');
 		},
-		profile: function(req, resp){
-			
-		},
 		emailConfirmation: function(req, resp){
 			resp.render('message', {message:"A confirmation has been sent to your registered mail address. Please verify."});
 		},
 		routes: function(app){
-			app.get('/', _checkAuth(false),this.index);
+			app.get('/', _checkAuth(true),this.index);
+			app.get('/home', _checkAuth(false),this.home);
 			app.get('/signup', _checkAuth(true), this.signup);
 			app.get('/signin', this.signin);
 			app.post('/signup', this.signupAction);
 			app.post('/signin', this.signinAction);
 			app.get('/activate/:token', this.activate);
 			app.post('/forgotPassword', this.forgotPassword);
-			app.get('/profile', this.profile);
 			app.get('/signout', this.signout);
 			app.get('/emailConfirmation', this.emailConfirmation);
 			app.get('/pingjs', this.pingjs);

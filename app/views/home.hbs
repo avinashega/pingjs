@@ -1,0 +1,53 @@
+{{!< default}}
+
+{{#contentFor "title"}}Pingjs{{/contentFor}}
+
+
+
+<div class="b-siteList" role="b-siteList" onclick="return {url: '/sites/list', removeUrl: '/sites/remove'};">
+	<div class="col-md-3">
+		<h2>My Pings</h2>
+        <div class="b-siteList__list">
+        </div>
+        <button type="button" class="btn btn-success" onclick="window.location='/sites';">Manage Pings</button>
+    </div>
+    <div class="col-md-6 col-md-push-1">
+    <h2>Create a Ping</h2>
+    <br />
+    	<form role="b-ajaxForm" class="form-sign" method="post" action="/sites/add">
+	        <div class="form-group col-md-4">
+	        <label class="control-label">Protocol</label>
+	        <div class="bfh-selectbox" data-name="protocol" id="protocol" data-value="http">
+	            <div data-value="http">HTTP</div>
+	            <div data-value="https">HTTPS</div>
+	        </div>
+	        </div>
+	        <div class="form-group col-md-8">
+	            <label class="control-label">URL</label>
+	            <input type="text" name="url" required placeholder="www.example.com" class="form-control">
+	        </div>
+			<div class="form-group col-md-6">
+	            <label class="control-label">Port</label>
+	            <input type="text" name="port" placeholder="optional(example:8080)" class="form-control">
+	        </div>
+	        <!--<div class="form-group col-md-6">
+	            <label class="control-label">Site Path</label>
+	            <input type="text" name="path" class="form-control" placeholder="optional(example: home, index)">
+	        </div>
+	        <div class="form-group col-md-6">
+	        <label class="control-label">Method</label>
+	        <div class="bfh-selectbox" data-name="method" id="method" data-value="GET">
+	            <div data-value="GET">GET</div>
+	            <div data-value="POST">POST</div>
+	        </div>
+	        </div>-->
+	        <div class="form-group col-md-6">
+	            <label class="control-label">Frequency(in minutes)</label>
+	            <input type="text" name="frequency" required value="5" class="form-control">
+	        </div>
+	    	<button type="submit" class="btn btn-lg btn-success btn-block b-ajaxForm__submitButton" autocomplete="off">Create</button>
+	    	<label class="help-block text-danger b-ajaxForm__errorMessage"></label>
+	    	<label class="help-block text-success b-ajaxForm__successMessage"></label>
+		</form>
+    </div>
+</div>
