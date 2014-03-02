@@ -15,10 +15,10 @@ module.exports = {
 			var html = welcome({user:user, host:config.http.host});
         	var jobData = {
                     html: html,
-                    text: 'Welcome to Schedugram',
-                    subject: 'Welcome to Schedugram',
+                    text: 'Welcome to Pingjs',
+                    subject: 'Welcome to Pingjs',
                     from_email: config.emails.info,
-                    from_name: 'Schedugram',
+                    from_name: 'Pingjs',
                     to:[{
                     	email: user.email,
                     	name: user.firstName+' '+user.lastName,
@@ -39,9 +39,9 @@ module.exports = {
 			var jobData = {
                     html: html,
                     text: 'Reset Password',
-                    subject: 'Schedugram Password Reset Request',
+                    subject: 'Pingjs Password Reset Request',
                     from_email: config.emails.info,
-                    from_name: 'Schedugram',
+                    from_name: 'Pingjs',
                     to:[{
                     	email: user.email,
                     	name: user.firstName+' '+user.lastName,
@@ -64,9 +64,9 @@ module.exports = {
 			var jobData = {
                     html: html,
                     text: 'Post Successful',
-                    subject: 'Schedugram: your post was successful',
+                    subject: 'Pingjs: your post was successful',
                     from_email: config.emails.info,
-                    from_name: 'Schedugram',
+                    from_name: 'Pingjs',
                     to:[{
                     	email: user.email,
                     	name: user.firstName+' '+user.lastName,
@@ -90,8 +90,8 @@ module.exports = {
                     html: html,
                     text: 'Error in Posting to Instagram',
                     from_email: config.emails.info,
-                    subject: '[IMP] Error posting your Schedugram image',
-                    from_name: 'Schedugram',
+                    subject: '[IMP] Error posting your Pingjs image',
+                    from_name: 'Pingjs',
                     to:[{
                     	email: user.email,
                     	name: user.firstName+' '+user.lastName,
@@ -120,9 +120,9 @@ module.exports = {
 			var jobData = {
                     html: html,
                     text: 'You have entered an incorrect Instagram login',
-                    subject: 'Schedugram error: Incorrect login',
+                    subject: 'Pingjs error: Incorrect login',
                     from_email: config.emails.info,
-                    from_name: 'Schedugram',
+                    from_name: 'Pingjs',
                     to:[{
                     	email: user.email,
                     	name: user.firstName+' '+user.lastName,
@@ -145,9 +145,9 @@ module.exports = {
 			var jobData = {
                     html: html,
                     text: 'Your Instagram password was reset.',
-                    subject: 'Schedugram error: Password reset',
+                    subject: 'Pingjs error: Password reset',
                     from_email: config.emails.info,
-                    from_name: 'Schedugram',
+                    from_name: 'Pingjs',
                     to:[{
                     	email: user.email,
                     	name: user.firstName+' '+user.lastName,
@@ -171,7 +171,7 @@ module.exports = {
                     text: 'Captions do not match',
                     subject: 'Media Update error',
                     from_email: config.emails.info,
-                    from_name: 'Schedugram',
+                    from_name: 'Pingjs',
                     to:[{
                     	email: config.emails.error,
                     	name: 'Schedugr.am',
@@ -195,10 +195,10 @@ module.exports = {
                     text: 'Job still posting after 10 minutes',
                     subject: 'Post error',
                     from_email: config.emails.info,
-                    from_name: 'Schedugram',
+                    from_name: 'Pingjs',
                     to:[{
                     	email: config.emails.error,
-                    	name: 'Schedugram',
+                    	name: 'Pingjs',
                     	type: 'to'
                     }]                        
                 },
@@ -214,10 +214,10 @@ module.exports = {
                     text: 'Generic error',
                     subject: subject,
                     from_email: config.emails.info,
-                    from_name: 'Schedugram',
+                    from_name: 'Pingjs',
                     to:[{
                         email: config.emails.error,
-                        name: 'Schedugram',
+                        name: 'Pingjs',
                         type: 'to'
                     }]
                 },
