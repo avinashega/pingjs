@@ -48,8 +48,8 @@ module.exports = function (db) {
             this.findOne({$or:[{username: login},{email:login}], password: password}, cb);
         },
 
-        getByLogin: function (login, cb) {
-            this.findOne({login: login}, cb);
+        getByLogin: function (username, email, cb) {
+            this.findOne({$or:[{username: username},{email:email}]}, cb);
         },
         
         getById: function (id, cb) {

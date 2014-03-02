@@ -31,7 +31,7 @@ module.exports={
 	            }
 	        })
 	            .then(function (params) {
-	                return q.all([params, q.nbind(users.getByLogin, users)(params.username)]);
+	                return q.all([params, q.nbind(users.getByLogin, users)(params.username, params.email)]);
 	            })
 	            .then(function (res) {
 	                var params = res[0],
