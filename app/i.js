@@ -63,7 +63,7 @@ module.exports = {
             }
 
             if (!needGuest && isGuest) {
-                resp.redirect('/signin');
+                resp.redirect('/pingjs');
                 return;
             }
             next();
