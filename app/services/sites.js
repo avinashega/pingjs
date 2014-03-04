@@ -37,6 +37,7 @@ module.exports={
 	        				console.log('three free checks');
 	        				body.username = user.username;
 	        				body.active = true;
+	        				body.averageResponseTime = 0;
 	        				return q.nbind(sites.addSite, sites)(body);
 	        			} else {
 	        				return q.reject('Site limit Reached. Upgrade your plan from the <a href="/profile">profile</a> page');
@@ -47,7 +48,6 @@ module.exports={
 	        			if(userSites.length >= plan.limit){
 	        				return q.reject('Site limit Reached. Upgrade your plan from the <a href="/profile">profile</a> page');
 	        			} else {
-	        				console.log('here');
 	        				return q.nbind(sites.insert, sites)({url:body.site, frequency:5, account:req.user.username, active:true});
 	        			}
 	        		});
