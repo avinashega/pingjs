@@ -15,6 +15,7 @@
             <th>Last Checked Status</th>
             <th>Last Checked At</th>
             <th>Total Checks</th>
+            <th>Average Response Time</th>
             <th>Remove</th>
         </tr>
         </thead>
@@ -47,6 +48,7 @@
                 {{formatDate last_status_change}}
             </td>
             <td>{{pingCount}}</td>
+            <td>{{averageResponseTime}}</td>
             <td><button class="btn btn-danger b-siteList__removeButton" type="button" onclick="mixpanel.track('deleteCheck');">Remove</button></td>
             </tr>
         {{/each}}
