@@ -45,6 +45,11 @@
 	            <label class="control-label">Frequency(in minutes)</label>
 	            <input type="text" name="frequency" required value="5" class="form-control">
 	        </div>
+	        <div class="form-group col-md-6">
+	            <label class="control-label">Response Threshold(in milli seconds)</label>
+	            <input type="text" name="responsiveness" required value="5" class="form-control">
+	        </div>
+	        <p class="small">Note: Get notified when your website's response time goes beyond the threshold. Leave it blank if you wish to not get notified.</p>
 	    	<button type="submit" class="btn btn-lg btn-success btn-block b-ajaxForm__submitButton" autocomplete="off" onclick="mixpanel.track('check');">Create</button>
 	    	<label class="help-block text-danger b-ajaxForm__errorMessage"></label>
 	    	<label class="help-block text-success b-ajaxForm__successMessage"></label>
