@@ -8,8 +8,19 @@
         <link rel="stylesheet" href="/css/sign.css">
     </head>
     <body>
+    	<div id="fb-root"></div>
+    	<script>(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;	js = d.createElement(s); js.id = id;js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";	fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>
         <section id="header">
-            <div class="container"><img src="/img/logo_50h.png" title="Schedugram logo" alt="Schedugram Logo" height="50px"></div>
+            <div class="container">
+            <img src="/img/logo_50h.png" title="Schedugram logo" alt="Schedugram Logo" height="50px">
+            <div class="navbar-collapse collapse" id="navbar-main">
+            <ul class="nav navbar-nav pull-right">
+            	<li>
+            	<div class="fb-like" data-href="https://www.facebook.com/pingjs" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+            	</li>
+            </ul>
+            </div>
+            </div>
         </section>
         <div class="container">
             {{{body}}}
