@@ -99,5 +99,43 @@ module.exports={
 	        }).then(function(params){
 	        	return q.nbind(users.changePassword, users)(id, req.body.password, req.body.newpassword);
 	        });
+	    },
+	    forgotPassword: function(req){
+	    	req.sanitize('email').trim();
+	    	req.assert('email', 'Valid email required').isEmail();
+	    	 return q.fcall(function () {
+	             var errors = req.validationErrors();
+	             if (errors) {
+	                 return q.reject(errors);
+	             } else {
+	                 return req.body;
+	             }
+	         }).then(function(params){
+	        	 var deferred = q.defer();
+	        	 crypto.randomBytes(18, function(ex, buf) {
+	        		 var token = buf.toString('hex');
+	        		 deferred.resolve(q.nbind(users.forgotPassword, users)(params.email, token));
+	        	 });
+	        	 return deferred.promise;
+	         }).then(function(params){
+	        	 i.emailService().resetEmail(params[0]);
+	         	return params[0];
+	         });
+	    },
+
+	    resetPassword: function(req){
+	    	req.assert('newPassword', 'Please use at least 6 characters').len(6, 100);
+	        req.assert('repeatNewPassword', 'Passwords are not equal').equals(req.body.newPassword);
+	        console.log(req.body.token);
+	    	 return q.fcall(function () {
+	             var errors = req.validationErrors();
+	             if (errors) {
+	                 return q.reject(errors);
+	             } else {
+	                 return req.body;
+	             }
+	         }).then(function(params){
+	        		 return q.nbind(users.resetPassword, users)(params.token, params.newPassword);
+	         });
 	    }
 }
