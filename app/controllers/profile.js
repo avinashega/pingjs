@@ -21,7 +21,7 @@ module.exports={
 			});
 		},
 		changePassword: function(req, resp){
-			i.userService().changePassword(req).then(function(user){
+			i.userService().changePassword(req.session.userId, req).then(function(user){
 				if(!user || user.length <1 ){
 					resp.json(jsonResp.error('Internal server error. Failed to Change Password.'));
 				} else {
