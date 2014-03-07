@@ -7,7 +7,57 @@
         <div class="alert alert-success help-block b-siteList__successMessage"><strong>Success!</strong></div>
 		<div class="text-info">List of Ping(s):</div>
 		<div class="b-siteList__list"></div>
-
+		<div class="modal fade b-siteList__popup">
+        	<input type="hidden" name="id" class="b-siteList__modalId" />
+        	<div class="modal-dialog">
+            	<div class="modal-content">
+                	<div class="modal-header">
+                    	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    	<h4 class="modal-title">Edit your Ping</h4>
+                	</div>
+                	<div class="modal-body" style="overflow:auto;">
+						<div class="form-group col-md-4">
+	        				<label class="control-label">Protocol</label>
+					        <div class="bfh-selectbox b-siteList__protocol" data-name="protocol" id="protocol" data-value="">
+					            <div data-value="http">HTTP</div>
+					            <div data-value="https">HTTPS</div>
+					        </div>
+	        			</div>
+				        <div class="form-group col-md-8">
+				            <label class="control-label">URL</label>
+				            <input type="text" name="url" required placeholder="www.example.com" class="form-control b-siteList__url">
+				        </div>
+						<div class="form-group col-md-6">
+				            <label class="control-label">Port</label>
+				            <input type="text" name="port" placeholder="optional(example:8080)" class="form-control b-siteList__port">
+				        </div>
+				        <div class="form-group col-md-6">
+				            <label class="control-label">Site Path</label>
+				            <input type="text" name="path" class="form-control b-siteList__path" placeholder="optional(example: home, index)">
+				        </div>
+				        <!--<div class="form-group col-md-6">
+				        <label class="control-label">Method</label>
+				        <div class="bfh-selectbox" data-name="method" id="method" data-value="GET">
+				            <div data-value="GET">GET</div>
+				            <div data-value="POST">POST</div>
+				        </div>
+				        </div>-->
+				        <div class="form-group col-md-6">
+				            <label class="control-label">Frequency(in minutes)</label>
+				            <input type="text" name="frequency" required value="" class="form-control b-siteList__frequency">
+				        </div>
+				        <div class="form-group col-md-6">
+				            <label class="control-label">Response Threshold</label>
+				            <input type="text" name="responsiveness" optional placeholder="optional(example: 200)" class="form-control b-siteList__responsiveness">
+				        </div>
+                	</div>
+                	<div class="modal-footer">
+                    	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    	<button type="button" class="btn btn-primary b-siteList__modalSubmit" date-loading="Saving changes...">Save changes</button>
+                	</div>
+            	</div><!-- /.modal-content -->
+        	</div><!-- /.modal-dialog -->
+    	</div><!-- /.modal -->
 
 		<div class="b-siteList__addBlock">
 			<button type="button"

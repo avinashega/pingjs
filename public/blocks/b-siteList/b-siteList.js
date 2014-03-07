@@ -10,22 +10,25 @@
             this.$list = this._elem('list');
             this.$addBlock = this._elem('addBlock');
             this.$popup = this._elem('popup');
-            var submit = this._elem('modalresetPassword');
-            this._elem('modalresetPassword').click(this._proxy(function () {
-                var password = this._elem('newPassword').val();
+            
+            var submit = this._elem('modalSubmit');
+            this._elem('modalSubmit').click(this._proxy(function () {
                 var data = {
-                    password: password,
-                    id: this._elem('modalId').val()
+                    id: this._elem('modalId').val(),
+                    protocol: this._elem('protocol').val(),
+                    url: this._elem('url').val(),
+                    port: this._elem('port').val(),
+                    frequency: this._elem('frequency').val(),
+                    responsiveness: this._elem('responsiveness').val()
                 };
                 var _this = this;
                 submit.button('loading');
-                $.post(this.options.changePasswordUrl, data)
+                $.post(this.options.editSiteUrl, data)
                     .always(function (res) {
                         submit.button('reset');
                         if (res.status == 'ok') {
                         	_this._delMod('error');
                             _this._setMod('success');
-                            _this._elem('successMessage').text(res.data);
                         } else {
                         	_this._delMod('success');
                         	_this._setMod('error');
@@ -40,6 +43,7 @@
                     })
                     .then(this._proxy(function () {
                         this.$popup.modal('hide');
+                        this._loadCurrent();
                     }))
                     .done;
             }));
@@ -69,9 +73,9 @@
                 target.toggleClass('active');
             }));
             
-            this.element.on('click', '.' + this._getElemClass('changePassword'), this._proxy(function (e) {
+            this.element.on('click', '.' + this._getElemClass('editButton'), this._proxy(function (e) {
                 var target = this._elem('item').has($(e.currentTarget));
-                this._showPopupEdit(target.data('id'))
+                this._showPopupEdit(target.data('id'), target.data('protocol'), target.data('url'), target.data('port'), target.data('path'),target.data('frequency'), target.data('responsiveness'))
             }));
         },
 
@@ -103,11 +107,32 @@
                 ids.push($(this).data('id'));
             });
 
+            
             return ids;
         },
+        _load: function (url, where) {
+            where.html('');
+            $.get(url)
+                .then(function (res) {
+                    where.html(res.data);
+                })
+                .done();
+
+        },
+        _loadCurrent: function () {
+            var list = this._elem('list');
+
+            this._load('/manageSites/list', list);
+        },
         
-        _showPopupEdit: function (id) {
+        _showPopupEdit: function (id, protocol, url, port, path, frequency, responsiveness) {
             this._elem('modalId').val(id);
+            this._elem('protocol').val(protocol);
+            this._elem('url').val(url);
+            this._elem('port').val(port);
+            this._elem('path').val(path);
+            this._elem('frequency').val(frequency);
+            this._elem('responsiveness').val(responsiveness);
             this.$popup.modal('show');
         }
 

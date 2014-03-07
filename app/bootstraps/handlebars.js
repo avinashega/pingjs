@@ -10,7 +10,7 @@ module.exports = function (app) {
             long: "MM/DD/YYYY,  hh:mm a"
         };
 
-        return moment(datetime).format(DateFormats[format]);
+        return moment(datetime).format(DateFormats['long']);
     });
     /**
      * Date Format

@@ -6,38 +6,22 @@
     <table class="table table-striped table-bordered table-hover">
         <thead>
         <tr>
-            <th>Protocol</th>
             <th>Url</th>
-            <th>port</th>
-            <!--<th>Site Path</th>
-            <th>Method</th>-->
             <th>Frequency</th>
-            <th>Last Checked Status</th>
-            <th>Last Checked At</th>
-            <th>Total Checks</th>
-            <th>Average Response Time</th>
+            <th>Status</th>
+            <th>Last Pinged At</th>
+            <th>Total Pings</th>
+            <th>Average<br> Response<br> Time</th>
             <th>Remove</th>
         </tr>
         </thead>
         <tbody>
 
         {{#each sites}}
-            <tr class="b-siteList__item" data-id="{{_id}}">
+            <tr class="b-siteList__item" data-id="{{_id}}" data-protocol="{{protocol}}" data-url="{{url}}" data-port="{{port}}" data-path="{{path}}" data-frequency="{{frequency}}" data-responsiveness="{{responsiveness}}">
             <td>
-                {{protocol}}
+                {{protocol}}://{{url}}{{#if port}}:{{port}}{{/if}}{{#if path}}/{{path}}{{/if}}
             </td>
-            <td>
-                {{url}}
-            </td>
-            <td>
-                {{port}}
-            </td>
-            <!--<td>
-                {{path}}
-            </td>
-            <td>
-                {{method}}
-            </td>-->
             <td>
                 {{frequency}} minutes
             </td>
@@ -45,11 +29,14 @@
                 {{last_status}}
             </td>
             <td>
-                {{formatDate last_status_change}}
+                {{formatDate last_status_change short}}
             </td>
             <td>{{pingCount}}</td>
             <td>{{averageResponseTime}} ms</td>
-            <td><button class="btn btn-danger b-siteList__removeButton" type="button" onclick="mixpanel.track('deleteCheck');">Remove</button></td>
+            <td>
+            <button class="btn btn-sm btn-danger b-siteList__editButton" type="button" onclick="mixpanel.track('editCheck');">Edit</button>
+            <button class="btn btn-sm btn-default b-siteList__removeButton" type="button" onclick="mixpanel.track('deleteCheck');">Remove</button>
+            </td>
             </tr>
         {{/each}}
         </tbody>

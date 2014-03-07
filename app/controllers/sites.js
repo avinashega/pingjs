@@ -72,10 +72,19 @@ module.exports = {
 			resp.render('activity',{username:req.session.username});
 		});
 	},
+	editsite: function(req, resp){
+		i.siteService().updateSite(req).then(function(site){
+			resp.json(jsonResponse.data('success'));
+		}).fail(function(err){
+			console.log(err);
+            resp.json(jsonResponse.error(err));
+		});
+	},
 	
 	routes: function(app){
 		app.post('/sites/add', _checkAuth(false), this.postsite);
 		app.post('/sites/remove', _checkAuth(false), this.deletesite);
+		app.post('/sites/edit', _checkAuth(false), this.editsite);
 		app.get('/sites/list', _checkAuth(false), this.list);
 		app.get('/manageSites/list', _checkAuth(false), this.managelist);
 		app.get('/sites', _checkAuth(false), this.sites);
