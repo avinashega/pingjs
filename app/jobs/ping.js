@@ -23,12 +23,12 @@ module.exports = function (agenda) {
         var jobId = job.attrs._id;
         console.log("[pingJob] [.] Posting job ID "+jobId);
         open.then(function(conn) {
-                return conn.createChannel()
+                var ok = conn.createChannel()
                 .then(function(ch) {
                     ch.sendToQueue(config.amqp.job_queue, new Buffer(String(jobId)));
-                    _setJobIsPinging(jobId.toString(), true);
-                    done();
                 });
-            }).then(null, console.warn);
+                _setJobIsPinging(jobId.toString(), true);
+                done();
+            });
     });
 };
