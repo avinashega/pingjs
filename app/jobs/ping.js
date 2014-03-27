@@ -26,6 +26,7 @@ module.exports = function (agenda) {
                 var ok = conn.createChannel()
                 .then(function(ch) {
                     ch.sendToQueue(config.amqp.job_queue, new Buffer(String(jobId)));
+                    ch.close();
                 });
                 _setJobIsPinging(jobId.toString(), true);
                 done();
