@@ -13,7 +13,7 @@
         "apikey": "eBwZ2GI_5GabmN46DMNT2Q"
     },
     "emails":{
-    	"info":"info@pingjs.com"
+    	"info":"info@pingjs.in"
     },
     "amqp": {
 	    "RABBITMQ_TX_URL": "amqp://YXTHrqGo:h8ibbYNS3w1YmPaHkl85LQLxsObi8_tj@spotted-hazel-4.bigwig.lshift.net:10556/Fq9-5NruBZ3j",

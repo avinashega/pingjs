@@ -37,7 +37,7 @@ app.configure(function () {
     console.log('redis start');
     require('./app/bootstraps/session')(app);
     console.log('redis OK');
-    app.use(function(req,resp,next){
+    app.use(function(req,resp,next) {
         resp.locals.session = req.session;
         return next();
     });
